@@ -11,16 +11,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TempPolarBear/01-express.git"
+    "url": "git+https://github.com/TempPolarBear/nodejs-hw.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/TempPolarBear/01-express/issues"
+    "url": "https://github.com/TempPolarBear/nodejs-hw/issues"
   },
-  "homepage": "https://github.com/TempPolarBear/01-express#readme",
+  "homepage": "https://github.com/TempPolarBear/nodejs-hw#readme",
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^18.0.10",

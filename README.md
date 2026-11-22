@@ -49,6 +49,7 @@ npx prettier --check .
 
 ## Deploy on Render
 
-Create a Node.js Web Service connected to this repository and the `main` branch.
-Use `npm ci` as the build command and `npm start` as the start command. Render
-provides the `PORT` environment variable; the server binds to `0.0.0.0`.
+Create a Node.js Web Service connected to `TempPolarBear/nodejs-hw` and the
+`01-express` branch. Use `npm ci` as the build command and `npm start` as the
+start command. Render provides the `PORT` environment variable; the server binds
+to `0.0.0.0`.
