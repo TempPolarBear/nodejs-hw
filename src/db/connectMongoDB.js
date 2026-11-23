@@ -3,16 +3,16 @@ import mongoose from 'mongoose';
 
 const CONNECTION_TIMEOUT_MS = 15000;
 
-const connectMongoDB = async () => {
-  const mongoUrl = process.env.MONGO_URL;
-
-  if (!mongoUrl?.trim()) {
-    throw new Error('Required environment variable MONGO_URL is not set.');
-  }
-
+export const connectMongoDB = async () => {
   let timeoutId;
 
   try {
+    const mongoUrl = process.env.MONGO_URL;
+
+    if (!mongoUrl?.trim()) {
+      throw new Error('Required environment variable MONGO_URL is not set.');
+    }
+
     dns.setServers(['8.8.8.8', '1.1.1.1']);
 
     await Promise.race([
@@ -37,7 +37,7 @@ const connectMongoDB = async () => {
     const errorCode =
       error &&
       typeof error === 'object' &&
-      ('code' in error) &&
+      'code' in error &&
       (typeof error.code === 'string' || typeof error.code === 'number')
         ? `, code ${error.code}`
         : '';
@@ -45,12 +45,8 @@ const connectMongoDB = async () => {
     console.error(
       `MongoDB connection failed (${errorName}${errorCode}). Check DNS/network access, MongoDB Atlas IP access, cluster status, and credentials. MONGO_URL is not logged.`,
     );
-    throw new Error('Server startup aborted because MongoDB is unavailable.', {
-      cause: error,
-    });
+    process.exit(1);
   } finally {
     clearTimeout(timeoutId);
   }
 };
-
-export default connectMongoDB;

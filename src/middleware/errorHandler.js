@@ -1,13 +1,15 @@
-const errorHandler = (err, req, res, _next) => {
-  console.error(err);
+import { HttpError } from 'http-errors';
 
-  const status =
-    err.status ??
-    (err.name === 'ValidationError' || err.name === 'CastError' ? 400 : 500);
+export const errorHandler = (err, req, res, _next) => {
+  if (err instanceof HttpError) {
+    return res.status(err.statusCode).json({
+      message: err.message,
+    });
+  }
 
-  res.status(status).json({
-    message: err.message,
+  console.error('An unexpected server error occurred.');
+
+  return res.status(500).json({
+    message: 'Internal Server Error',
   });
 };
-
-export default errorHandler;

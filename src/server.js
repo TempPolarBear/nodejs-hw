@@ -2,10 +2,10 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 
-import logger from './middleware/logger.js';
-import connectMongoDB from './db/connectMongoDB.js';
-import notFoundHandler from './middleware/notFoundHandler.js';
-import errorHandler from './middleware/errorHandler.js';
+import { logger } from './middleware/logger.js';
+import { connectMongoDB } from './db/connectMongoDB.js';
+import { notFoundHandler } from './middleware/notFoundHandler.js';
+import { errorHandler } from './middleware/errorHandler.js';
 import notesRoutes from './routes/notesRoutes.js';
 
 const app = express();
@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 // Routes
-app.use('/notes', notesRoutes);
+app.use(notesRoutes);
 
 // Error handlers
 app.use(notFoundHandler);
@@ -33,7 +33,7 @@ const startServer = async () => {
   });
 };
 
-startServer().catch((error) => {
-  console.error(error.message);
+startServer().catch(() => {
+  console.error('Server startup failed.');
   process.exit(1);
 });
