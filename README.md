@@ -12,7 +12,7 @@ part of the GoIT Node.js course, Module 2.
 
 ## Requirements
 
-- Node.js and npm
+- Node.js `>=20.19.0` and npm
 - A reachable MongoDB instance and its connection string
 
 ## Installation
@@ -23,8 +23,12 @@ Install the project dependencies:
 npm install
 ```
 
-Create a `.env` file in the project root and configure the environment
-variables:
+Copy the example environment file and set `MONGO_URL` to your MongoDB
+connection string:
+
+```sh
+cp .env.example .env
+```
 
 | Variable    | Required | Description                                      |
 | ----------- | -------- | ------------------------------------------------ |

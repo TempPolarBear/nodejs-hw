@@ -1,7 +1,7 @@
 {
-  "name": "01-express",
+  "name": "nodejs-hw",
   "version": "1.0.0",
-  "description": "",
+  "description": "Notes REST API using Express and MongoDB",
   "main": "index.js",
   "scripts": {
     "start": "node src/server.js",
@@ -17,6 +17,9 @@
   "author": "",
   "license": "ISC",
   "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
   "bugs": {
     "url": "https://github.com/TempPolarBear/nodejs-hw/issues"
   },
